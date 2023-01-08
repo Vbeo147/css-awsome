@@ -26,20 +26,8 @@ body {
   align-items: center;
 }
 
-@keyframes backgroundAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .input {
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .input input {
@@ -51,7 +39,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   background: transparent;
-  transition: filter 0.25s linear;
+  transition: all 0.25s linear;
   color: white;
   box-shadow: 2px 2px 1px 2px white;
 }
@@ -64,96 +52,86 @@ body {
 }
 
 .input input:hover:not(.input input:focus) {
-  filter: drop-shadow(0 0 0.2rem white);
+  border: 2px solid tomato;
+}
+
+.input input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.submit-btn-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 35px;
+}
+
+.submit-btn-container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.submit-btn-container span:nth-child(1) {
+  transform: rotate(0deg);
+}
+.submit-btn-container span:nth-child(2) {
+  transform: rotate(180deg);
+}
+
+.submit-btn-container span::before {
+  content: "";
+  position: absolute;
+  background: cyan;
+  animation: SubmitBtnBorderAnimation 5s linear infinite;
+}
+.submit-btn-container span:nth-child(1)::before,
+.submit-btn-container span:nth-child(2)::before {
+  width: 100%;
+  height: 2px;
+}
+
+@keyframes SubmitBtnBorderAnimation {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+  51% {
+    transform-origin: right;
+    transform: scaleX(1);
+  }
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
 }
 
 #submit-btn {
-  width: 250px;
-  padding: 8px;
+  width: 100%;
+  height: 80%;
+  border-radius: 3px;
   font-size: 12px;
   font-weight: bold;
   filter: blur(0.5px);
   outline: none;
   border: 2px solid transparent;
   cursor: pointer;
-  border-radius: 3px;
   transition: all 0.2s linear;
 }
 
 #submit-btn:hover {
-  border: 2px solid rgba(0, 0, 0, 0.4);
   filter: blur(0.85px);
-}
-
-.btn {
-  --borderWidth: 3px;
-  background: white;
-  position: relative;
-  border-radius: var(--borderWidth);
-}
-
-.btn::after {
-  content: "";
-  position: absolute;
-  top: calc(-1 * var(--borderWidth));
-  left: calc(-1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(
-    60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
-    #07b39b,
-    #6fba82
-  );
-  border-radius: calc(2 * var(--borderWidth));
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
-}
-
-@keyframes animatedgradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-#box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
-  height: 200px;
-  color: white;
-  font-family: "Raleway";
-  font-size: 2.5rem;
-}
-.submit-btn-container {
-  --borderWidth: 3px;
-  background: #1d1f20;
-  position: relative;
-  border-radius: var(--borderWidth);
-}
-.submit-btn-container:after {
-  content: "";
-  position: absolute;
-  top: calc(-1 * var(--borderWidth));
-  left: calc(-1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055);
-  border-radius: caslc(2 * var(--borderWidth));
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
+  border: 2px solid cyan;
+  height: 115%;
 }
