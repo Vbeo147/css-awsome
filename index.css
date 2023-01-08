@@ -119,7 +119,7 @@ body {
 
 #submit-btn {
   width: 100%;
-  height: 80%;
+  height: 85%;
   border-radius: 3px;
   font-size: 12px;
   font-weight: bold;
@@ -131,7 +131,6 @@ body {
 }
 
 #submit-btn:hover {
-  filter: blur(0.85px);
   border: 2px solid cyan;
-  height: 115%;
+  height: 110%;
 }
